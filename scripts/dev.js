@@ -8,7 +8,7 @@ import pages from '../src/meta'
         const { default: pageContent } =
             await import(`../src/pages/${page.file}`)
 
-        app.get(page.path, (_, res: express.Response) => res.send(pageContent))
+        app.get(page.path, (_, res) => res.send(pageContent))
     }
 
     app.listen(3000)
