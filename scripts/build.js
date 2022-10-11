@@ -5,7 +5,7 @@ const { stripIndents } = require('common-tags')
 
 const getPageContents = (file) => {
     const page = require(`../src/pages/${file}`)
-    return page.default
+    return page
 }
 
 const buildFolder = 'build'
@@ -38,3 +38,5 @@ for (const page of pages) {
         )
     }
 }
+
+console.log('page built successfully 👍🏻')
