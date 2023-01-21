@@ -1,14 +1,16 @@
-const express = require('express')
-const pages = require('../src/meta')
+import express from 'express'
+import pages from '../src/meta'
 
-const app = express()
+const app = express();
 
-for (const page of pages) {
-    const { default: pageContent } =
-        require(`../src/pages/${page.file}.ts`)
+(async () => {
+    for (const page of pages) {
+        const { default: pageContent } =
+            await import(`../src/pages/${page.file}`)
 
-    app.get(page.path, (_, res) => res.send(pageContent))
-}
+        app.get(page.path, (_, res) => res.send(pageContent))
+    }
 
-app.listen(3000)
-console.log('💬: dev preview listening on http://localhost:3000')
+    app.listen(3000)
+    console.log('💬: dev preview listening on http://localhost:3000')
+})()
