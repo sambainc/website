@@ -6,4 +6,4 @@ const pages = [
     }
 ]
 
-module.exports = pages
+export default pages
